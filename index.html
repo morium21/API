@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Card</title>
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+
+    <div id="card-container"></div>
+
+    <script>
+        let cardContainer = document.getElementById('card-container');
+
+        fetch('https://dummyjson.com/products')
+            .then(response => response.json())
+            .then(data => {
+                data.products.forEach(item => {
+                    cardContainer.innerHTML += `
+                    <div class="card">
+                    <img src="${item.thumbnail}" alt="${item.title}"> 
+                    <h2>${item.title}</h2>
+                    <p>${item.description}
+
+                    </div>
+                    `;
+                });
+            })
+
+
+    </script>
+</body>
+
+</html>
